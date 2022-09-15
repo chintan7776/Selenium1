@@ -22,12 +22,14 @@ public class D_RegPage {
         select.selectByIndex(16);
 
 
+
         WebElement ddown1 = driver.findElement(By.name("DateOfBirthMonth"));
         Select select1 = new Select(ddown1);
 
 
-        select1.selectByValue("5");
-        select1.selectByIndex(5);
+//        select1.selectByValue("5");
+//        select1.selectByIndex(5);
+        select1.selectByVisibleText("May");
 
         WebElement ddown2 = driver.findElement(By.name("DateOfBirthYear"));
         Select select2 = new Select(ddown2);
@@ -35,9 +37,11 @@ public class D_RegPage {
         select2.selectByValue("1993");
         select2.selectByIndex(82);
 
-
-
-
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
 
         driver.findElement(By.id("Email")).sendKeys("chintanpatel@gmail.com");
