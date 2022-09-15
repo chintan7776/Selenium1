@@ -10,10 +10,17 @@ public class E_Haridham {
         WebDriver driver = new ChromeDriver();
         driver.get("https://ydsuk.org//");
         driver.findElement(By.xpath("//*[@id=\"page-container\"]/div[1]/div/div/div/div[1]/div/div/div/a")).click();
+
+        //get title
         System.out.println(driver.getTitle());
         String Title = driver.getTitle();
         System.out.println("Page Title:" +Title);
+
+        // back page
         driver.navigate().back();
+
+        // close window
+        driver.quit();
 
 
 
