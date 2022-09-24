@@ -4,9 +4,11 @@
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import java.util.concurrent.TimeUnit;
 
 
 public class D_RegPage {
@@ -14,10 +16,13 @@ public class D_RegPage {
         System.setProperty("webdriver.chrome.driver", "C:\\software\\driver\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://demo.nopcommerce.com/");
+
+        driver.manage().window().maximize();
         driver.findElement(By.xpath("//a[@class='ico-register']")).click();
         driver.findElement(By.id("gender-male")).click();
         driver.findElement(By.id("FirstName")).sendKeys("Chintan");
         driver.findElement(By.id("LastName")).sendKeys("Patel");
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         WebElement ddown = driver.findElement(By.name("DateOfBirthDay"));
         Select select = new Select(ddown);
@@ -48,10 +53,14 @@ public class D_RegPage {
         }
 
 
-        driver.findElement(By.id("Email")).sendKeys("chintanpatel@gmail.com");
+        driver.findElement(By.id("Email")).sendKeys("chintanpatel74@gmail.com");
         driver.findElement(By.id("Password")).sendKeys("123456");
         driver.findElement(By.id("ConfirmPassword")).sendKeys("123456");
         driver.findElement(By.id("register-button")).click();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,+1000)");
+
 
     }
 }
